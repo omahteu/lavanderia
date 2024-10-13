@@ -22,30 +22,21 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4">Agendar horário</h5>
+                            <h5 class="card-title fw-semibold mb-4">Meus agendamentoss</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <select class="form-control" name="" id="diasSelect">
-                                                <option value="" hidden>Selecione o dia</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <select class="form-control" name="" id="horarioselect">
-                                                <option value="" hidden>Selecione o horário</option>
-                                                <option value="1">07 às 10</option>
-                                                <option value="2">10 às 13</option>
-                                                <option value="3">13 às 16</option>
-                                                <option value="4">16 às 19</option>
-                                                <option value="5">19 às 22</option>
-                                                <option value="6">22 às 01</option>
-                                                <option value="7">Madrugada</option>
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Agendar</button>
-                                        <a href="./dash.html" class="btn btn-warning">Voltar</a>
-                                    </form>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Dia</th>
+                                                <th>Hora</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="meuhistorico">
+
+                                        </tbody>
+                                    </table>
+                                    <a href="./dash.html" class="btn btn-warning">Voltar</a>
                                 </div>
                             </div>
                         </div>
