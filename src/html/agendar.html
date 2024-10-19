@@ -72,41 +72,18 @@
             // Array com nomes dos dias da semana
             var weekDays = ['DOMINGO', 'SEGUNDA-FEIRA', 'TERÇA-FEIRA', 'QUARTA-FEIRA', 'QUINTA-FEIRA', 'SEXTA-FEIRA', 'SÁBADO'];
     
-            // Realizar requisição AJAX para buscar dias e horários ocupados
-            $.ajax({
-                url: './src/php/buscar_agenda.php',
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    var diasOcupados = response.diasOcupados; // Dias ocupados vindos do PHP
-                    var horariosOcupados = response.horariosOcupados; // Horários ocupados vindos do PHP
-                    
-                    // Preencher o select de dias omitindo os dias ocupados
-                    for (var day = currentDay; day <= lastDayOfMonth; day++) {
-                        var date = new Date(currentYear, currentMonth, day);
-                        var weekDayName = weekDays[date.getDay()]; // Obter o nome do dia da semana
+            // Adicionar os dias restantes ao <select>
+            for (var day = currentDay; day <= lastDayOfMonth; day++) {
+                // Criar uma data para cada dia
+                var date = new Date(currentYear, currentMonth, day);
+                var weekDayName = weekDays[date.getDay()]; // Obter o nome do dia da semana
     
-                        // Se o dia não estiver ocupado, adiciona ao select
-                        if (!diasOcupados.includes(day)) {
-                            $('#diasSelect').append($('<option>', {
-                                value: day,
-                                text: day + ' | ' + weekDayName
-                            }));
-                        }
-                    }
-    
-                    // Omitir horários ocupados no select de horários
-                    $('#horarioSelect option').each(function() {
-                        var horarioValue = $(this).val();
-                        if (horariosOcupados.includes(parseInt(horarioValue))) {
-                            $(this).remove(); // Remove o horário se estiver ocupado
-                        }
-                    });
-                },
-                error: function(error) {
-                    console.log('Erro na requisição:', error);
-                }
-            });
+                // Adicionar o dia no formato: dia | nome do dia da semana
+                $('#diasSelect').append($('<option>', {
+                    value: day,
+                    text: day + ' | ' + weekDayName
+                }));
+            }
         });
     </script>
 </body>
